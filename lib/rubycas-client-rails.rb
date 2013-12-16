@@ -56,6 +56,7 @@ module RubyCAS
           # The only situation where this is acceptable is if the user manually does a refresh and 
           # the same ticket happens to be in the URL.
           log.warn("Re-using previously validated ticket since the ticket id and service are the same.")
+          controller.redirect_to controller.url_for(controller.params)
           #st = last_st
           return true
         elsif last_st &&
@@ -122,7 +123,7 @@ module RubyCAS
               end
 
             end
-
+            controller.redirect_to controller.url_for(controller.params)
             return true
           else
             log.warn("Ticket #{st.ticket.inspect} failed validation -- #{st.failure_code}: #{st.failure_message}")
