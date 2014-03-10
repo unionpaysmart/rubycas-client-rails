@@ -26,6 +26,7 @@ module RubyCAS
         @@log = @@client.log
       end
 
+
       def filter(controller)
         raise "Cannot use the CASClient filter because it has not yet been configured." if config.nil?
 
@@ -154,6 +155,8 @@ module RubyCAS
         unauthorized!(controller)
         return false
       end
+
+      alias :before,:filter
 
       # used to allow faking for testing
       # with cucumber and other tools.
