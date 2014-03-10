@@ -156,7 +156,7 @@ module RubyCAS
         return false
       end
 
-      alias :before,:filter
+      alias :before :filter
 
       # used to allow faking for testing
       # with cucumber and other tools.
